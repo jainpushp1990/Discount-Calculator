@@ -1,0 +1,79 @@
+﻿@model Login.Models.GoldModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .bs-example {
+            height: 300px;
+        }
+
+        .centerlook {
+            padding-left: 400px;
+            font-weight: bold;
+            width: 1000px;
+        }
+
+        .error {
+            padding-left: 400px;
+            font-weight: bold;
+            width: 1000px;
+            color: red;
+        }
+
+        .loginbtn {
+            padding-left: 500px;
+        }
+    </style>
+
+</head>
+<body>
+
+    @using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+    {
+    <div class="bs-example" style="border:2px solid gray;">
+
+        <div class="form-group centerlook">
+            <h1> Calculate Total Price  </h1>
+        </div>
+        <div class="form-group centerlook">
+            <label>Gold Price: </label>
+            @Html.EditorFor(model => model.GoldPrice)
+            @Html.ValidationMessageFor(model => model.GoldPrice)
+        </div>
+        <div class="form-group centerlook">
+            <label>Weight of the item:</label>
+            @Html.TextBoxFor(model => model.Weightitem)
+            @Html.ValidationMessageFor(model => model.Weightitem)
+
+        </div>
+
+        <div class="form-group centerlook">
+            <label>Discount:</label>
+            @Html.TextBoxFor(model => model.Discount)
+            @Html.ValidationMessageFor(model => model.Discount)
+
+        </div>
+        <div class="form-group centerlook">
+            <label>Gold Price: @TempData["GoldPrice"]</label>
+            <label>Weight of the item:@TempData["Weightitem"]</label>
+            <label>Discount: @TempData["Discount"]</label>
+            <label>Total price of the item: @TempData["totalPrice"]</label>
+        </div>     
+        <div class="loginbtn">
+
+            <input type="submit" value="Caluclate" name="Calculate total Price" class="btn btn-primary" />
+
+        </div>
+    </div>
+    }
+</body>
+</html>   
